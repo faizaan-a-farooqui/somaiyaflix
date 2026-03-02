@@ -67,6 +67,4 @@ app.post("/movie", (req, res) => {
     res.render("movie", { playerurl, movieid });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+module.exports = app;
