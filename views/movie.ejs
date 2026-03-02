@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #09113f;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            color: #00bfff;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            width: 250px;
+        }
+        button {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            background-color: #00bfff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/">Back to Trending Movies</a>
+
+    <form method="POST" action="/search">
+        <input type="text" name="query" placeholder="Search movies..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+
+        <form method="POST" action="/movie">
+            <input type="hidden" name="movieid" value="<%= movieid %>">
+            <input type="hidden" name="player" value="jw">
+            <button type="submit" style="cursor:pointer; background-color: #0586b1;">JW Player</button>
+        </form>
+
+        <form method="POST" action="/movie">
+            <input type="hidden" name="movieid" value="<%= movieid %>">
+            <input type="hidden" name="player" value="vidking">
+            <button type="submit" style="cursor:pointer; background-color: #0586b1;">VidKing</button>
+        </form>
+
+        <form method="POST" action="/movie">
+            <input type="hidden" name="movieid" value="<%= movieid %>">
+            <input type="hidden" name="player" value="vidlink">
+            <button type="submit" style="cursor:pointer; background-color: #0586b1;">VidLink</button>
+        </form>
+
+    </div>
+
+    <iframe src="<%= playerurl %>" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+
+</body>
+</html>

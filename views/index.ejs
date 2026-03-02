@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #09113f;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center; 
+        }
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            width: 250px;
+        }
+        button {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            background-color: #00bfff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .movies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+        }
+        .movie-card {
+            background: #0e092b;
+            width: 150px;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #00bfff;
+        }
+        .movie-card img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>  
+    <img src="https://i.ibb.co/Qjhb9Smy/somaiyaflix.png" style="display:block;margin:auto;">
+    <h1>Trending Movies This Week</h1>
+
+    <form method="POST" action="/search">
+        <input type="text" name="query" placeholder="Search movies..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="movies">
+        <% movies.forEach(movie => { %>
+            <form method="POST" action="/movie">
+                <input type="hidden" name="movieid" value="<%= movie.id %>">
+                <input type="hidden" name="player" value="jw">
+                <button type="submit" style="all:unset;cursor:pointer;">
+                    <div class="movie-card">
+                        <% if(movie.poster){ %>
+                        <img src="<%= movie.poster %>">
+                        <% } %>
+                        <div><%= movie.title %> (<%= movie.date %>)</div>
+                        <br>
+                        <div><%= movie.rating %> ⭐</div>
+                    </div>
+                </button>
+            </form>
+        <% }) %>
+    </div>
+</body>
+</html>
