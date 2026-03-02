@@ -13,8 +13,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const TMDB_KEY = "YOUR_TMDB_API_KEY_HERE";
-
 async function getMovies(url) {
     const headers = {
         accept: "application/json",
