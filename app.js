@@ -5,7 +5,6 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const PORT = 3000;
 const TMDB_BEARER = process.env.TMDB_BEARER;
 
 app.set("view engine", "ejs");
@@ -16,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 async function getMovies(url) {
     const headers = {
         accept: "application/json",
-        Authorization: "Bearer ${TMDB_BEARER}"
+        Authorization: 'Bearer ${TMDB_BEARER}'
     };
 
     const response = await axios.get(url, { headers });
