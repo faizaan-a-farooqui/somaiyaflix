@@ -16,7 +16,7 @@ console.log("TMDB:", process.env.TMDB_BEARER ? "LOADED" : "MISSING");
 async function getMovies(url) {
     const headers = {
         accept: "application/json",
-        Authorization: 'Bearer ${TMDB_BEARER}'
+        Authorization: `Bearer ${TMDB_BEARER}`
     };
 
     const response = await axios.get(url, { headers });
