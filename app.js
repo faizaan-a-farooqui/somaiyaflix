@@ -10,6 +10,8 @@ const TMDB_BEARER = process.env.TMDB_BEARER;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 console.log("TMDB:", process.env.TMDB_BEARER ? "LOADED" : "MISSING");
 
@@ -51,7 +53,7 @@ app.post("/search", async (req, res) => {
 
 // Movie
 app.post("/movie", (req, res) => {
-    const { movieid, player } = req.body;
+    const { moviename, movieid, player } = req.body;
     let playerurl = "";
 
     if (player === "vidlink") {
@@ -62,7 +64,7 @@ app.post("/movie", (req, res) => {
         playerurl = `https://www.vidking.net/embed/movie/${movieid}?color=6f6fff&autoPlay=true`;
     }
 
-    res.render("movie", { playerurl, movieid });
+    res.render("movie", { playerurl, movieid, moviename });
 });
 
 module.exports = app;
