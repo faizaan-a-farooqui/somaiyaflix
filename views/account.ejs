@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+<div class="header">
+        <form method="POST" action="/search" class="search-form">
+            <input type="text" name="query" placeholder="Search movies..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        <a href="/" class="signin-btn">Home</a>
+    </div>
+
+
+<div class="account-header">
+
+    <h1><%= username %></h1>
+
+    <form action="/logout" method="POST">
+        <button class="logout-btn">
+            Logout
+        </button>
+    </form>
+
+</div>
+
+<h2>Watch History</h2>
+
+<div class="history">
+
+    <% if(history.length === 0){ %>
+
+        <p>No movies watched yet.</p>
+
+    <% } %>
+
+    <% history.forEach(movie => { %>
+
+        <form method="POST" action="/movie">
+
+            <input type="hidden" name="moviename" value="<%= movie.movieName %>">
+            <input type="hidden" name="movieid" value="<%= movie.movieId %>">
+            <input type="hidden" name="player" value="vidking">
+
+            <button type="submit" style="all:unset;cursor:pointer;width:100%;">
+
+                <div class="history-card">
+
+                    <div class="movie-title">
+                        <%= movie.movieName %>
+                    </div>
+
+                </div>
+
+            </button>
+
+        </form>
+
+    <% }) %>
+
+</div>
+
+</body>
+</html>

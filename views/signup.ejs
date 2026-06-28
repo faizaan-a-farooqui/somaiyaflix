@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In - SomaiyaFlix</title>
+    <title>Sign Up - SomaiyaFlix</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -19,22 +19,26 @@
 
     <div class="auth-box">
 
-        <img src="https://i.ibb.co/Qjhb9Smy/somaiyaflix.png"
-             class="logo"
-             style="max-width:250px;margin-bottom:20px;">
+        <img
+            src="https://i.ibb.co/Qjhb9Smy/somaiyaflix.png"
+            class="logo"
+            style="max-width:250px;margin-bottom:20px;"
+        >
 
-        <h1>Sign In</h1>
+        <h1>Create Account</h1>
 
         <% if(typeof error !== "undefined" && error){ %>
             <p class="error"><%= error %></p>
         <% } %>
 
-        <form action="/signin" method="POST" class="auth-form">
+        <form action="/signup" method="POST" class="auth-form">
 
             <input
                 type="text"
                 name="username"
-                placeholder="Username"
+                placeholder="Choose a username"
+                minlength="3"
+                maxlength="20"
                 autocomplete="username"
                 required
             >
@@ -42,19 +46,20 @@
             <input
                 type="password"
                 name="password"
-                placeholder="Password"
-                autocomplete="current-password"
+                placeholder="Choose a password"
+                minlength="6"
+                autocomplete="new-password"
                 required
             >
 
             <button type="submit">
-                Sign In
+                Create Account
             </button>
 
         </form>
 
-        <a href="/signup" class="action-btn auth-link">
-            Not registered? Sign Up
+        <a href="/signin" class="action-btn auth-link">
+            Already have an account? Sign In
         </a>
 
     </div>

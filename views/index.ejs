@@ -8,11 +8,18 @@
 </head>
 <body>
     <div class="header">
-    <form method="POST" action="/search" class="search-form">
-        <input type="text" name="query" placeholder="Search movies..." required>
-        <button type="submit">Search</button>
-    </form>
-        <a href="/signin" class="signin-btn">Sign In</a>
+        <form method="POST" action="/search" class="search-form">
+            <input type="text" name="query" placeholder="Search movies..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (user) { %>
+            <a href="/account" class="signin-btn" style="text-decoration: underline;">
+                <%= user.username %>
+            </a>
+        <% } else { %>
+            <a href="/signin" class="signin-btn">Sign In</a>
+        <% } %>
     </div>
     
     <img src="https://i.ibb.co/Qjhb9Smy/somaiyaflix.png" style="display:block;margin:auto;">

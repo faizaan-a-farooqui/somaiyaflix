@@ -14,7 +14,13 @@
             <button type="submit">Search</button>
         </form>
 
-        <a href="/signin" class="signin-btn">Sign In</a>
+        <% if (user) { %>
+            <a href="/account" class="signin-btn" style="text-decoration: underline;">
+                <%= user.username %>
+            </a>
+        <% } else { %>
+            <a href="/signin" class="signin-btn">Sign In</a>
+        <% } %>
     </div>
 
     <img
